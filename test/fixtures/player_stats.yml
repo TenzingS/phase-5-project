@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  points: 1.5
+  rebounds: 1.5
+  assists: 1.5
+  steals: 1.5
+  blocks: 1.5
+  fg: 1.5
+  3pt: 1.5
+  ft: 1.5
+  efg: 1.5
+  player: one
+
+two:
+  points: 1.5
+  rebounds: 1.5
+  assists: 1.5
+  steals: 1.5
+  blocks: 1.5
+  fg: 1.5
+  3pt: 1.5
+  ft: 1.5
+  efg: 1.5
+  player: two
