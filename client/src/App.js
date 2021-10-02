@@ -7,6 +7,7 @@ import DiscussionBoard from './DiscussionBoard';
 import NewPost from "./NewPost";
 import EditPost from './EditPost';
 import Stats from './Stats';
+import Comment from './Comment';
 
 function App() {
     const [user, setUser] = useState(false);
@@ -32,11 +33,14 @@ function App() {
         <Route exact path = "/createpost">
           <NewPost user={user}/>
         </Route>
-        <Route exact path = "/editpost">
+        <Route exact path = '/editpost/:id'>
           <EditPost />
         </Route>
         <Route exact path = "/stats">
           <Stats user={user} setUser={setUser}/>
+        </Route>
+        <Route exact path = "/withcomments">
+          <Comment user={user}/>
         </Route>
       </BrowserRouter>
     </div>

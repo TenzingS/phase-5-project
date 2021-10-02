@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
 
-  resources :news, only: [:index, :show]
-  resources :posts, only: [:index, :create, :destroy, :update]
+  resources :news, only: [:index]
   resources :player_stats, only: [:show]
-  resources :players, only: [:index, :show]
   resources :team_stats, only: [:show]
-  resources :teams, only: [:index, :show]
+
+  get '/comments', to: 'comments#index'
+
+  resources :posts
+
+  get '/teams', to: 'teams#index'
+  get '/teams/:id', to: 'teams#show'
+
+  get '/players', to: 'players#index'
+  get '/players/:id', to: 'players#show'
 
   get '/playerstats/:id', to: 'player_stats#show'
   post '/signup', to: 'users#create'

@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
 
+    def index
+        render json: Comment.all
+    end
+
     def create
         post = Post.find(params[:post_id])
         comment = post.comments.create!(comment_params)

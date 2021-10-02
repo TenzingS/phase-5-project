@@ -1,21 +1,24 @@
 
-
-# require ‘rest-client’
-
-# def secret_key
-#     ENV["API_KEY"]
-# end
-
-# def nba_dataset
-
-#     api_data = {key: secret_key}
-
-#     nba_teams = RestClient.get("api-nba-v1.p.rapidapi.com#{api_data[:key]}")
-# end
-
 User.create(
     name:"Ten", email:"ten@gmail.com", password: "Ten"
 )
+
+Post.create(
+    header: "Bucks win NBA Championship!",
+    body: "On July 20th, the Milwaukee Bucks win their first title in exactly 50 years! The last time they won was in the 1971 season.",
+    user_id:1
+    )
+
+Post.create(
+    header: "NBA Preseason starts this sunday!",
+    body: "The first game will be between the Nets and the Lakers. They are the 2 main favorites to reach the finals this coming season.",
+    user_id:1
+    )
+
+    Comment.create(name: "Ten", comment:"Giannis was amazing!!", user_id: 1, post_id: 1)
+
+    Comment.create(name: "Ten", comment:"Yeah if they're healthy, the season is down to those 2 teams.", user_id: 1, post_id: 2)
+
     Team.create(id: 1610612737, 
     abbreviation: "ATL",
     name: "Atlanta Hawks", 
@@ -245,9 +248,4 @@ User.create(
         image: "https://www.basketball-reference.com/req/202106291/images/players/caldwke01.jpg",
         team_id: 1610612764)
     
-    Post.create(
-        header: "Bucks win NBA Championship!",
-        body: "On Juky 20th, the MilWaukee Bucks win their first title in exactly 50 years! The last time they won was in the 1971 season.",
-        user_id:1
-        )
 puts "Done seeding.."

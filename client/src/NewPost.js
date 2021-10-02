@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 
 
-const NewPost = ({user }) => {
+const NewPost = ({user}) => {
     const [headerData, setHeaderData] = useState('')
     const [bodyData, setBodyData] = useState('')
 
@@ -30,15 +30,19 @@ const NewPost = ({user }) => {
         history.push('/home')
     }
 
+    function cancelPost(){
+        history.push('/home')
+    }
     
     return (
         <div>
             <h4>Create a new post {user.name}!</h4>
-            <form className="note-editor" onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit} >
             <input placeholder="Put header here..." onChange={handleHeader} value={headerData} />
             <textarea placeholder="Put body here..." onChange={handleBody} value={bodyData} />
-            <div className="button-row">
-                <input className="button" type="submit" value="Save" />
+            <div>
+                <input type="submit" value="Post"/>
+                <button onClick={cancelPost} >Cancel</button>
             </div>
         </form>
         </div>

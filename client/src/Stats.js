@@ -5,21 +5,25 @@ import SearchTeams from './SearchTeams'
 import TeamsList from './TeamsList';
 import PlayersList from './PlayersList';
 import SearchPlayers from './SearchPlayers';
+// import TeamContainer from './TeamContainer';
 
 const Stats = ({user, setUser}) => {
     
     const [teams, setTeams] = useState([])
-    const [searchTeams, setSearchTeams] = useState('')
+    const [searchTeams, setSearchTeams] = useState([])
     const [players, setPlayers] = useState([])
     const [searchPlayers, setSearchPlayers] = useState([])
 
     let history = useHistory();
 
     useEffect(() => {
-        fetch('/teams')
-        .then(res => res.json())
-        .then(data => setTeams(data))
-        },[])
+        fetch('/teams').then(r => {
+                if (r.ok) {
+                    r.json().then((data) => setTeams(data.data));
+                }
+            });
+        }, []);
+                    
 
     function searchInputTeams(input){
         setSearchTeams(input)
@@ -27,17 +31,21 @@ const Stats = ({user, setUser}) => {
 
     function filterSearchTeams(){
         if(searchTeams.length > 0){
-          return teams.filter(team => team.header.toLowerCase().includes(searchTeams.toLowerCase()))
+          return teams.filter(team => team.full_name.toLowerCase().includes(searchTeams.toLowerCase()))
         } else{
+        
           return teams
         }
       }
     
     useEffect(() => {
         fetch('/players')
-        .then(res => res.json())
-        .then(data => setPlayers(data))
-    },[])
+        .then(r => {
+            if (r.ok) {
+                r.json().then((data) => setPlayers(data.data));
+            }
+        });
+    }, []);
 
     function searchInputPlayers(input){
         setSearchPlayers(input)
@@ -45,7 +53,7 @@ const Stats = ({user, setUser}) => {
 
     function filterSearchPlayers(){
         if(searchPlayers.length > 0){
-          return players.filter(player => player.header.toLowerCase().includes(searchPlayers.toLowerCase()))
+          return players.filter(player => player.first_name.toLowerCase().includes(searchPlayers.toLowerCase()))
         } else{
           return players
         }
@@ -66,6 +74,7 @@ const Stats = ({user, setUser}) => {
         history.push('/')
         }
 
+
     return (
         <div>
             <h4>Welcome {user.name}!</h4>
@@ -75,8 +84,8 @@ const Stats = ({user, setUser}) => {
             <div>
                 <SearchTeams searchInput={searchInputTeams}/>
                 <SearchPlayers searchInput={searchInputPlayers} />
-                <TeamsList teams={filterSearchTeams} setTeams={setTeams}/>
-                <PlayersList players={filterSearchPlayers} setPlayers={setPlayers} />
+                <TeamsList teams={filterSearchTeams()} />
+                <PlayersList players={filterSearchPlayers()} />
                
 
             </div>

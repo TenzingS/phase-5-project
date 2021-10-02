@@ -1,58 +1,43 @@
 import React from 'react';
-// import EditPost from './EditPost';
-// import { useHistory } from 'react-router';
-import { useState } from 'react';
+import EditPost from './EditPost';
+import { useHistory } from 'react-router';
+import Comment from './Comment';
 
-const PostContainer = ({post, selectPost, handleDelete, handleEdit}) => {
+const PostContainer = ({post, selectPost, handleDelete, handleEdit, comments}) => {
 
-    const [editHeader, setEditHeader] = useState('')
-    const [editBody, setEditBody] = useState('')
+    let history = useHistory();
 
-    function handleEditHeader(e){
-        setEditHeader(e.target.value)
-      }
-    
-      function handleEditBody(e){
-        setEditBody(e.target.value)
-      }
-
-
-    function handleEdits(e){
-        e.preventDefault();
-        fetch(`/posts/${post.id}`,
-        {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            body: JSON.stringify({
-                header: editHeader,
-                body: editBody
+    function withComments(){
+        <div>
+            {comments.map(comment => {
+                    <Comment 
+                        key={comment.id}
+                        comment={comment}
+                        post_id={post.id}
+                        post={post} />
             })
-        })
-        .then(r => r.json())
-        .then(edits => handleEdit(edits))
+            }
+            {history.push('/withcomments')}
+        </div>
+    }
+
+    function editPost(){
+        <div>
+            <EditPost post={post} handleEdit={handleEdit} />
+            {history.push(`/editpost/${post.id}`)}
+        </div>
     }
 
 
     return (
         <div>
             <ul onClick={() => selectPost(post)} >
+                <div onClick={withComments} >
                 <h3>{post.header}</h3>
                 <p>{post.body}</p>
-            </ul>
-
-            <form className="note-editor" onSubmit={handleEdits} >
-                <input placeholder="Put header here..." onChange={handleEditHeader} value={editHeader} />
-                <textarea placeholder="Put body here..." onChange={handleEditBody} value={editBody} />
-                <div className="button-row">
-                    <input className="button" type="submit" value="Submit edit" />
                 </div>
-            </form>
-
-
-            <button>Edit post</button>
+            </ul>
+            <button onClick={editPost} >Edit post</button>
             <button onClick= {() => handleDelete(post)}>Delete</button>
         </div>
     );

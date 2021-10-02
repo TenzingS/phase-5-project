@@ -1,10 +1,8 @@
 import React from 'react';
 import PostContainer from './PostContainer';
 
-const PostContent = ({posts, selectPost, handleDelete, handleEdit}) => {
+const PostContent = ({posts, selectPost, handleDelete, handleEdit, comments}) => {
    
-
-    console.log(posts)
     return (
         <div> 
         {posts.map(post => (
@@ -14,6 +12,7 @@ const PostContent = ({posts, selectPost, handleDelete, handleEdit}) => {
                 selectPost={selectPost} 
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
+                comments={comments}
                 />
         ))}
         </div>

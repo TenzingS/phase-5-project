@@ -3,12 +3,15 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Search from "./Search";
 import Content from './Content';
+import News from './News';
 
 const DiscussionBoard = ({setUser, user})=> {
 
     const [posts, setPosts] = useState([])
     const [search, setSearch] = useState('')
     const [content, setContent] = useState(null)
+    const [comments, setComments] = useState([])
+    const [news, setNews] = useState([])
 
 
     let history = useHistory();
@@ -18,7 +21,12 @@ const DiscussionBoard = ({setUser, user})=> {
         .then(res => res.json())
         .then(data => setPosts(data))
         },[])
-        
+    
+    useEffect(() => {
+        fetch('/comments')
+        .then(res => res.json())
+        .then(data => setComments(data))
+        },[])
 
     function selectPost(post){
         const selectContent = post 
@@ -38,9 +46,9 @@ const DiscussionBoard = ({setUser, user})=> {
         }
       }
 
-      function handleEdit(edits){
-          setPosts(edits)
-      }
+    //   function handleEdit(edits){
+    //       setPosts(edits)
+    //   }
 
     function handleDelete(post){
         fetch(`/posts/${post.id}`, 
@@ -71,6 +79,14 @@ const DiscussionBoard = ({setUser, user})=> {
         history.push('/stats')
     }
 
+    useEffect(() => {
+        fetch('/news')
+        .then(res => res.json())
+        .then(data => 
+            console.log(data))
+            // setNews(data.data))
+        },[])
+
     return (
         <div>
             <h4>Welcome {user.name}!</h4>
@@ -85,7 +101,9 @@ const DiscussionBoard = ({setUser, user})=> {
                 selectPost={selectPost} 
                 content={content}
                 handleDelete={handleDelete}
-                handleEdit={handleEdit}/>
+                // handleEdit={handleEdit}
+                comments={comments} />
+                <News news={news} />
 
             </div>
         </div>
