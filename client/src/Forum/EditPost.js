@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router';
 
-const EditPost = ({post, handleEdit}) => {
+const EditPost = ({post}) => {
 
 
     let history = useHistory();
@@ -36,10 +36,6 @@ const EditPost = ({post, handleEdit}) => {
         .then(r => {
              if (r.ok){
                 history.push('/home')}
-
-        //     r.json()
-        //     .then(edits => handleEdit(edits))
-        //     }})
     })}
 
     function cancelPost(){

@@ -83,8 +83,7 @@ const DiscussionBoard = ({setUser, user})=> {
         fetch('/news')
         .then(res => res.json())
         .then(data => 
-            console.log(data))
-            // setNews(data.data))
+            setNews(data.articles))
         },[])
 
     return (

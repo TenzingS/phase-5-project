@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :news, only: [:index]
+
   resources :player_stats, only: [:show]
   resources :team_stats, only: [:show]
 
   get '/comments', to: 'comments#index'
 
+  get '/news', to: 'news#index'
+  
   resources :posts
 
   get '/teams', to: 'teams#index'

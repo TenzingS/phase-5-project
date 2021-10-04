@@ -3,11 +3,11 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { Route, BrowserRouter } from "react-router-dom";
 import Login from "./Login";
-import DiscussionBoard from './DiscussionBoard';
-import NewPost from "./NewPost";
-import EditPost from './EditPost';
-import Stats from './Stats';
-import Comment from './Comment';
+import DiscussionBoard from './Forum/DiscussionBoard';
+import NewPost from "./Forum/NewPost";
+import EditPost from './Forum/EditPost';
+import Stats from './Stats/Stats';
+import Comment from './Forum/Comment';
 
 function App() {
     const [user, setUser] = useState(false);

@@ -1,9 +1,9 @@
 class NewsController < ApplicationController
+    ENV["API_KEY"]
     require 'rest-client'
-    ENV['API_KEY']
 
     def index
-        url = "https://newsapi.org/v2/everything?q=NBA&from=2021-09-04&to=2021-10-01&apiKey=API_KEY"
+        url = "https://newsapi.org/v2/everything?q=NBA&language=en&from=2021-10-04&apiKey=f0cc581cbfb5476aab032a1f24d1d761"
         news = RestClient.get(url)
         render json: news
     end
