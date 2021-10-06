@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   resources :player_stats, only: [:show]
   resources :team_stats, only: [:show]
 
-  get '/comments', to: 'comments#index'
+  resources :posts
+  resources :comments
+
 
   get '/news', to: 'news#index'
-  
-  resources :posts
 
   get '/teams', to: 'teams#index'
   get '/teams/:id', to: 'teams#show'

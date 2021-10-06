@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router';
 
-const EditPost = ({post}) => {
+const EditPost = () => {
 
 
     let history = useHistory();

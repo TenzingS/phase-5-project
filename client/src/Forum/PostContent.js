@@ -1,20 +1,22 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import PostContainer from './PostContainer';
 
-const PostContent = ({posts, selectPost, handleDelete, handleEdit, comments}) => {
+const PostContent = ({user, post, handleDelete}) => {
+
+    const [comments, setComments] = useState([])
+
+    useEffect(() => {
+        fetch(`/comments`)
+        .then(res => res.json())
+        .then(data => setComments(data))
+        },[])
    
     return (
         <div> 
-        {posts.map(post => (
-            <PostContainer 
-                key = {post.id}
-                post = {post}
-                selectPost={selectPost} 
-                handleDelete={handleDelete}
-                handleEdit={handleEdit}
-                comments={comments}
-                />
-        ))}
+        <PostContainer 
+            handleDelete={handleDelete} user={user} 
+            post={post} comments={comments} />
         </div>
     );
 }

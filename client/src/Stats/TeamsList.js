@@ -1,7 +1,7 @@
 import React from 'react';
 import TeamContainer from './TeamContainer';
 
-const TeamsList = ({teams}) => {
+const TeamsList = ({teams, players}) => {
 
 
     return (
@@ -9,7 +9,8 @@ const TeamsList = ({teams}) => {
             {teams.map(team => (
                         <TeamContainer
                             key = {team.id}
-                            team = {team} />
+                            team = {team} 
+                            players={players} />
             ))};
         </div>
     )

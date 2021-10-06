@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Route, BrowserRouter } from "react-router-dom";
@@ -7,7 +6,9 @@ import DiscussionBoard from './Forum/DiscussionBoard';
 import NewPost from "./Forum/NewPost";
 import EditPost from './Forum/EditPost';
 import Stats from './Stats/Stats';
+import NewComment from './Forum/NewComment';
 import Comment from './Forum/Comment';
+import PlayersList from './Stats/PlayersList';
 
 function App() {
     const [user, setUser] = useState(false);
@@ -39,8 +40,14 @@ function App() {
         <Route exact path = "/stats">
           <Stats user={user} setUser={setUser}/>
         </Route>
-        <Route exact path = "/withcomments">
+        <Route exact path = "/newcomment">
+          <NewComment user={user}/>
+        </Route>
+        <Route exact path = "/showcomments">
           <Comment user={user}/>
+        </Route>
+        <Route exact path = "/teampage">
+          <PlayersList user={user}/>
         </Route>
       </BrowserRouter>
     </div>

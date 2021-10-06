@@ -9,8 +9,6 @@ const DiscussionBoard = ({setUser, user})=> {
 
     const [posts, setPosts] = useState([])
     const [search, setSearch] = useState('')
-    const [content, setContent] = useState(null)
-    const [comments, setComments] = useState([])
     const [news, setNews] = useState([])
 
 
@@ -21,18 +19,7 @@ const DiscussionBoard = ({setUser, user})=> {
         .then(res => res.json())
         .then(data => setPosts(data))
         },[])
-    
-    useEffect(() => {
-        fetch('/comments')
-        .then(res => res.json())
-        .then(data => setComments(data))
-        },[])
 
-    function selectPost(post){
-        const selectContent = post 
-        setContent(selectContent)
-        console.log('Post is Clicked!')
-      }
 
     function searchInput(input){
         setSearch(input)
@@ -46,9 +33,6 @@ const DiscussionBoard = ({setUser, user})=> {
         }
       }
 
-    //   function handleEdit(edits){
-    //       setPosts(edits)
-    //   }
 
     function handleDelete(post){
         fetch(`/posts/${post.id}`, 
@@ -94,14 +78,11 @@ const DiscussionBoard = ({setUser, user})=> {
             <h1>NBA Today</h1>
             <div>
                 <Search searchInput={searchInput}/>
-                <Content 
+                <Content
                 posts={filterSearch()}
-                setPosts={setPosts}
-                selectPost={selectPost} 
-                content={content}
                 handleDelete={handleDelete}
-                // handleEdit={handleEdit}
-                comments={comments} />
+                user={user}/>
+
                 <News news={news} />
 
             </div>

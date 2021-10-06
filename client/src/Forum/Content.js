@@ -3,15 +3,13 @@ import NewPost from './NewPost';
 import PostContent from './PostContent';
 import { useHistory } from 'react-router';
 
-const Content = ({posts, setPosts, content, selectPost, handleDelete, handleEdit, comments}) => {
+const Content = ({posts, handleDelete, user}) => {
 
     let history = useHistory();
 
     function createNew(){
         <div>
-            <NewPost
-            posts={posts} setPosts={setPosts} content={content} selectPost={selectPost}
-            />
+            <NewPost />
             {history.push('/createpost')}
         </div>
     }
@@ -19,9 +17,14 @@ const Content = ({posts, setPosts, content, selectPost, handleDelete, handleEdit
     return (
         <div>
             <button onClick = {createNew} >Create a new post</button>
-            <PostContent 
-                posts={posts} comments={comments}
-                selectPost={selectPost} handleDelete={handleDelete} handleEdit={handleEdit} />
+            {posts.map(post => (
+                <PostContent
+                    key = {post.id}
+                    post = {post} 
+                    handleDelete={handleDelete}
+                    user={user}
+                    />
+        ))}
         </div>
     );
 }

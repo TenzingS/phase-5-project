@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
 
     def index
-        render json: Comment.all
+        comments = Comment.all
+        render json: comments
     end
 
     def create
@@ -19,6 +20,6 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.permit(:name, :comment)
+        params.permit(:name, :comment, :post_id)
     end
 end

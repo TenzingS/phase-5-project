@@ -1,24 +1,41 @@
 import React from 'react';
+import { useHistory } from 'react-router';
+import NewComment from './NewComment';
 
-const Comment = ({user, comment, post, post_id}) => {
+const Comment = ({comment, header, body, key}) => {
 
-    function showComments(){
-        if (comment.post_id == post_id){
-           return <p>{comment.comment}</p>
-        } else {
-            return <p>No comments yet!</p>
-        }
+    let history = useHistory();
+
+
+    function addComment(){
+            <NewComment />
+            history.push('/newcomment')
+    }
+
+    function handleDelete(comment){
+        fetch(`/comments/${comment.id}`, 
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((r) => { 
+        if (r.ok) {
+        console.log('Item was deleted!')
+    }})
     }
 
     return (
         <div>
             <ul>
-            <h3>{post.header}</h3>
-            <p>{post.body}</p>
+            <h3>{header}</h3>
+            <p>{body}</p>
             <hr/>
-            <button onClick={showComments}>Show Comments</button>
-            {user.name}
+            <p>{comment}</p>  
+            <br/>
             </ul>
+            <button onClick={addComment}>Add a comment</button>
+            <button onClick= {() => handleDelete(comment)}>Delete Comment</button>
             
         </div>
     );

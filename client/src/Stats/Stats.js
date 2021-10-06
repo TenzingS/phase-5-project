@@ -5,7 +5,6 @@ import SearchTeams from './SearchTeams'
 import TeamsList from './TeamsList';
 import PlayersList from './PlayersList';
 import SearchPlayers from './SearchPlayers';
-// import TeamContainer from './TeamContainer';
 
 const Stats = ({user, setUser}) => {
     
