@@ -19,13 +19,13 @@ const NewPost = ({user}) => {
 
     function handleSubmit(e){
         e.preventDefault();
-        const newpost = {header: headerData, body: bodyData};
+        // const newpost = {header: headerData, body: bodyData};
         fetch('/posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newpost)
+            body: JSON.stringify({header: headerData, body: bodyData})
         })
         history.push('/home')
     }

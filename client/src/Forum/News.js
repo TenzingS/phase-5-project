@@ -9,8 +9,6 @@ const News = ({news}) => {
                 <a href={post.url} target="_blank" rel="noreferrer">
                     {post.title}
                 </a>
-                <br/>
-                    {post.description}
                 <hr/>
             </li>   
                 )

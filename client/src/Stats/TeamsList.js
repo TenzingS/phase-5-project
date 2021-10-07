@@ -11,7 +11,7 @@ const TeamsList = ({teams, players}) => {
                             key = {team.id}
                             team = {team} 
                             players={players} />
-            ))};
+            ))}
         </div>
     )
 }

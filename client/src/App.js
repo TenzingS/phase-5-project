@@ -6,9 +6,12 @@ import DiscussionBoard from './Forum/DiscussionBoard';
 import NewPost from "./Forum/NewPost";
 import EditPost from './Forum/EditPost';
 import Stats from './Stats/Stats';
+import Teams from './Stats/Teams'
+import Players from './Stats/Players'
 import NewComment from './Forum/NewComment';
 import Comment from './Forum/Comment';
 import PlayersList from './Stats/PlayersList';
+import PostContainer from './Forum/PostContainer';
 
 function App() {
     const [user, setUser] = useState(false);
@@ -24,6 +27,7 @@ function App() {
 
   return (
     <div className="App">
+
       <BrowserRouter>
         <Route exact path = "/">
           <Login setUser={setUser} user={user}/>
@@ -37,13 +41,19 @@ function App() {
         <Route exact path = '/editpost/:id'>
           <EditPost />
         </Route>
+        <Route exact path = '/post/:id'>
+          <PostContainer />
+        </Route>
         <Route exact path = "/stats">
           <Stats user={user} setUser={setUser}/>
         </Route>
-        <Route exact path = "/newcomment">
-          <NewComment user={user}/>
+        <Route exact path = "/teams">
+          <Teams user={user} setUser={setUser}/>
         </Route>
-        <Route exact path = "/showcomments">
+        <Route exact path = "/players">
+          <Players user={user} setUser={setUser}/>
+        </Route>
+        <Route exact path = "/post/:id">
           <Comment user={user}/>
         </Route>
         <Route exact path = "/teampage">

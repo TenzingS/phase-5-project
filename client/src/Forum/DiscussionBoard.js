@@ -46,6 +46,7 @@ const DiscussionBoard = ({setUser, user})=> {
         console.log('Item was deleted!')
     }})
     }
+
     
     function logOut() {
         fetch('/logout', {
@@ -63,12 +64,12 @@ const DiscussionBoard = ({setUser, user})=> {
         history.push('/stats')
     }
 
-    useEffect(() => {
-        fetch('/news')
-        .then(res => res.json())
-        .then(data => 
-            setNews(data.articles))
-        },[])
+    // useEffect(() => {
+    //     fetch('/news')
+    //     .then(res => res.json())
+    //     .then(data => 
+    //          setNews(data.articles))
+    //     },[])
 
     return (
         <div>
@@ -81,9 +82,9 @@ const DiscussionBoard = ({setUser, user})=> {
                 <Content
                 posts={filterSearch()}
                 handleDelete={handleDelete}
-                user={user}/>
-
-                <News news={news} />
+                user={user}
+                />
+                {/* <News news={news} /> */}
 
             </div>
         </div>

@@ -5,6 +5,15 @@ class CommentsController < ApplicationController
         render json: comments
     end
 
+    def show
+        comment = Comment.find_by(id: params[:id])
+        if comment 
+            render json: comment
+        else
+            render json: {error: "Not Found"}, status: :not_found
+        end
+    end
+
     def create
         post = Post.find(params[:post_id])
         comment = post.comments.create!(comment_params)
@@ -20,6 +29,6 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.permit(:name, :comment, :post_id)
+        params.permit(:name, :comment)
     end
 end

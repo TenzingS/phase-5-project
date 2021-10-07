@@ -3,12 +3,11 @@ import PlayerContainer from './PlayerContainer';
 
 const PlayersList = ({players, team}) => {
 
-    console.log(players)
     return (
         <div>
             {team}
             <br/>
-            {players.map(player => (
+            {players.map((player, key) => (
                 <PlayerContainer
                 key = {player.id}
                 player = {player} />

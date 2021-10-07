@@ -2,39 +2,50 @@ import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 
-const Newcomment = ({user}) => {
-    const [newComment, setNewComment] = useState('')
+const Newcomment = ({handleSubmit, submitLabel}) => {
+    const [text, setText] = useState("")
 
-    function handleNewComment(e){
-        setNewComment(e.target.value) 
+    const isTextareaDisabled = text.length === 0;
+    
+    const onSubmit = e => {
+        e.preventDefault()
+        handleSubmit(text)
+        setText('')
     }
 
-    let history = useHistory();
 
-    function handleSubmit(e){
-        e.preventDefault();
-        fetch('/comments', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newComment)
-        })
-        history.push('/home')
-    }
+    // function handleNewComment(e){
+    //     setNewComment(e.target.value) 
+    // }
 
-    function cancelPost(){
-        history.push('/home')
-    }
+    // let history = useHistory();
+
+    // function handleSubmit(e){
+    //     e.preventDefault();
+    //     fetch('/comments', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(newComment)
+    //     })
+    //     history.push('/home')
+    // }
+
+    // function cancelComment(){
+    //     history.push(`/post/${post.id}`)
+    // }
 
     return (
         <div>
             <label>Add a new comment:</label>
-            <form onSubmit={handleSubmit} >
-                <textarea placeholder="Put comment here..." onChange={handleNewComment} />
+            <form onSubmit={onSubmit} >
+                <textarea 
+                    placeholder="Put comment here..." 
+                    value={text}
+                    onChange={(e) => setText(e.target.value)} />
                 <div>
-                    <input type="submit" value="Post"/>
-                    <button onClick={cancelPost} >Cancel</button>
+                    <button disabled={isTextareaDisabled} >{submitLabel}</button>
                 </div>
             </form>
         </div>
