@@ -82,7 +82,6 @@ const DiscussionBoard = ({setUser, user})=> {
                 posts={filterSearch()}
                 handleDelete={handleDelete}
                 user={user}/>
-
                 <News news={news} />
 
             </div>

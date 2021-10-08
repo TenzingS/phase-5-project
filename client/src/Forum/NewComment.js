@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 
-const Newcomment = ({user}) => {
+const Newcomment = () => {
     const [newComment, setNewComment] = useState('')
 
     function handleNewComment(e){

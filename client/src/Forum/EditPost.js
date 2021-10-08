@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router';
 
-const EditPost = () => {
+const EditPost = ({header}) => {
 
 
     let history = useHistory();
@@ -46,10 +46,12 @@ const EditPost = () => {
         <div>
             <form onSubmit={handleEdits} >
                 <label>Edit post:</label>
-                <input 
-                    placeholder="Edit header here..." 
+                <h3>{header}</h3>
+                <textarea 
+                    placeholder={"Edit header here..." }
                     onChange={handleEditHeader} 
                     value={editHeader} />
+                    <br/>
                 <textarea 
                     placeholder="Edit body here..." 
                     onChange={handleEditBody} 

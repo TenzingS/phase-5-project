@@ -57,7 +57,7 @@ const Login = ({setUser}) => {
     return (
         <div>
             <h1>Welcome to NBA Today! <br/> Please login or signup to join the newest NBA discussion board!</h1>
-            <div>
+            <div className="LoginFormContainer" >
             <form onSubmit = {logIn}>
                 <h3>Login!</h3>
                 <label>
@@ -92,13 +92,13 @@ const Login = ({setUser}) => {
                     />
                 </label>
                 <div>
-                    <button type="submit">Login</button>
+                    <button className="Button" type="submit">Login</button>
                 </div>
             </form>
             <form onSubmit = {signUp}>
                 <h3>Become a user!</h3>
                 <label>
-                    <p>Userame:</p>
+                    <p>Username:</p>
                     <input
                     value = {newName}
                     onChange ={(e) => setNewName(e.target.value)}
@@ -129,7 +129,7 @@ const Login = ({setUser}) => {
                     />
                 </label>
                 <div>
-                    <button type="submit">Signup</button>
+                    <button className="Button" type="submit">Signup</button>
                 </div>
             </form>
             </div>

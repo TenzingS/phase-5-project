@@ -7,10 +7,15 @@ const PostContent = ({user, post, handleDelete}) => {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        fetch(`/comments`)
-        .then(res => res.json())
-        .then(data => setComments(data))
-        },[])
+        let isMounted = true;
+        fetch(`/comments`).then((r) => {
+            if (r.ok) {
+                r.json().then((data) => {
+                    if(isMounted) setComments(data);
+                });
+              return () => {isMounted = false}};
+            });
+          }, []);
    
     return (
         <div> 

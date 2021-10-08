@@ -41,3 +41,53 @@
   display:flex; 
   flex-direction:row;
 }
+
+body {
+  background-color: lightgray;
+}
+
+.LoginFormContainer {
+  width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 32px;
+  padding-bottom: 35px;
+}
+
+.LoginFormContainer * {
+  display: table;
+  margin: auto;
+}
+
+button.Button {
+  cursor: pointer;
+}
+
+a:visited { 
+  text-decoration: none; 
+  color: blue 
+ }
+
+a:hover { text-decoration: none; color:orangered; }
+a:focus { text-decoration: none; color:orange; }
+a:active { text-decoration: none; color:teal; }
+
+.posts {
+  width: 500 px
+}
+
+.playercard {
+  width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 32px;
+  padding-bottom: 35px;
+}

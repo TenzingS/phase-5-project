@@ -8,7 +8,6 @@ import EditPost from './Forum/EditPost';
 import Stats from './Stats/Stats';
 import NewComment from './Forum/NewComment';
 import Comment from './Forum/Comment';
-import PlayersList from './Stats/PlayersList';
 
 function App() {
     const [user, setUser] = useState(false);
@@ -45,9 +44,6 @@ function App() {
         </Route>
         <Route exact path = "/showcomments">
           <Comment user={user}/>
-        </Route>
-        <Route exact path = "/teampage">
-          <PlayersList user={user}/>
         </Route>
       </BrowserRouter>
     </div>
