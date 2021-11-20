@@ -43,3 +43,4 @@ gem 'active_model_serializers'
 
 gem 'rest-client', '~> 2.1'
 gem 'dotenv-rails'
+gem 'figaro'

@@ -2,12 +2,12 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import NewComment from './NewComment';
 
-const Comment = (props) => {
+const Comment = ({post, comment}) => {
 
     let history = useHistory();
 
-console.log(props.header)
-console.log(props.comment)
+console.log(post)
+console.log(comment)
 
     function addComment(){
             <NewComment />
@@ -30,22 +30,24 @@ console.log(props.comment)
         history.push('/home')
     }
 
-    // const renderComments = () => {
-    //     if (comment.post.id === post.id )
-    // }
+    const renderComments = (comment) => {
+        if (comment.post.id === post.id ){
+            return <p> {comment.comment} </p>
+        }
+    }
 
     return (
         <div>
             <button onClick={backtoHome} >Back to Home</button>
-            {/* <ul>
-            <h3>{header}</h3>
-            <p>{body}</p>
+            <ul>
+            <h3>{post.header}</h3>
+            <p>{post.body}</p>
             <hr/>
             <p>{renderComments()}</p>  
             <br/>
-            </ul> */}
+            </ul>
             <button onClick={addComment}>Add a comment</button>
-            {/* <button onClick= {() => handleDelete(comment)}>Delete Comment</button> */}
+            <button onClick= {() => handleDelete(comment)}>Delete Comment</button>
             
         </div>
     );

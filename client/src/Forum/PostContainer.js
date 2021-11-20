@@ -2,19 +2,15 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import EditPost from './EditPost';
 import Comment from './Comment';
-import { useCallback } from 'react';
 
 const PostContainer = ({user, post, handleDelete, comments}) => {
 
     let history = useHistory();
 
-    const withComments = useCallback(() => {
-        comments.map((comment) => {
-            {console.log(comment)}
-            <Comment comment={comment} header={post.header} body={post.body} key={post.id}/>
-        });
+    const withComments = () => {
+        
         history.push('/showcomments')
-    }, [])
+    }
 
     function editPost(){
             <EditPost header={post.header} />
@@ -39,6 +35,16 @@ const PostContainer = ({user, post, handleDelete, comments}) => {
                 <div>
                 <h3>{post.header}</h3>
                 <p>{post.body}</p>
+                <br/>
+                <ul>
+                {comments.map((comment, index) => {
+                    <Comment 
+                        key={post.id || index}
+                        comment={comment.comment} 
+                        post={post} 
+                        />
+                        {console.log(comment.comment)}
+                })}</ul>
                 </div>
             </ul>
             {renderButtons()}
