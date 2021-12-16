@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import EditPost from './EditPost';
-import Comment from './Comment';
+// import Comment from './Comment';
 
-const PostContainer = ({user, post, handleDelete, comments}) => {
+const PostContainer = ({user, post, handleDelete}) => {
 
     let history = useHistory();
 
@@ -12,8 +12,7 @@ const PostContainer = ({user, post, handleDelete, comments}) => {
         history.push('/showcomments')
     }
 
-    function editPost(){
-            <EditPost header={post.header} />
+    function editPost(post){
             history.push(`/editpost/${post.id}`)
     }
 
@@ -21,7 +20,7 @@ const PostContainer = ({user, post, handleDelete, comments}) => {
         if (post.user.id === user.id){
             return <div>
                 <button onClick ={withComments} >Comment</button>
-                <button onClick={editPost} >Edit post</button>
+                <button onClick={() => editPost(post)} >Edit post</button>
                 <button onClick= {() => handleDelete(post)}>Delete Post</button>
             </div>
         } else {
@@ -36,18 +35,19 @@ const PostContainer = ({user, post, handleDelete, comments}) => {
                 <h3>{post.header}</h3>
                 <p>{post.body}</p>
                 <br/>
-                <ul>
+                {/* <ul>
                 {comments.map((comment, index) => {
                     <Comment 
                         key={post.id || index}
                         comment={comment.comment} 
                         post={post} 
                         />
-                        {console.log(comment.comment)}
-                })}</ul>
+                        {console.log(comment)}
+                })}</ul> */}
                 </div>
+                {renderButtons()}
             </ul>
-            {renderButtons()}
+            <hr/>
         </div>
     );
 }

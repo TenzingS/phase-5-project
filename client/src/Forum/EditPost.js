@@ -1,10 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router';
 
-const EditPost = ({header}) => {
+const EditPost = ({post}) => {
 
+    console.log(post)
 
     let history = useHistory();
     const params = useParams();
@@ -42,16 +43,18 @@ const EditPost = ({header}) => {
         history.push('/home')
     }
 
+
     return (
         <div>
             <form onSubmit={handleEdits} >
                 <label>Edit post:</label>
-                <h3>{header}</h3>
+                <h3>{post}</h3>
                 <textarea 
                     placeholder={"Edit header here..." }
                     onChange={handleEditHeader} 
                     value={editHeader} />
                     <br/>
+                <h3>{post}</h3>
                 <textarea 
                     placeholder="Edit body here..." 
                     onChange={handleEditBody} 

@@ -54,7 +54,7 @@ class SearchPlayers extends Component {
     }
   
     getPlayerStats = (playerId) => {
-      axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=${playerId}`)
+      axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=${playerId}`)
       .then(async res => {
         console.log(res.data.data)
         this.setState({ playerStats: res.data.data[0]})

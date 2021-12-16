@@ -56,7 +56,7 @@ const Login = ({setUser}) => {
 
     return (
         <div>
-            <h1>Welcome to NBA Today! <br/> Please login or signup to join the newest NBA discussion board!</h1>
+            <h1>Welcome to NBA Today! </h1>
             <div className="LoginFormContainer" >
             <form onSubmit = {logIn}>
                 <h3>Login!</h3>
@@ -95,6 +95,7 @@ const Login = ({setUser}) => {
                     <button className="Button" type="submit">Login</button>
                 </div>
             </form>
+            <br/>
             <form onSubmit = {signUp}>
                 <h3>Become a user!</h3>
                 <label>

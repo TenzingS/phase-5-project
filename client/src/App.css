@@ -43,12 +43,11 @@
 }
 
 body {
-  background-color: lightgray;
+  background-color: #ac7e54
 }
 
 .LoginFormContainer {
   width: 400px;
-  background: #fff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.3);
@@ -56,6 +55,7 @@ body {
   margin-right: auto;
   padding-top: 32px;
   padding-bottom: 35px;
+  background-color: lightblue;
 }
 
 .LoginFormContainer * {

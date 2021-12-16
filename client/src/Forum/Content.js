@@ -1,6 +1,6 @@
 import React from 'react';
 import NewPost from './NewPost';
-import PostContent from './PostContent';
+import PostContainer from './PostContainer';
 import { useHistory } from 'react-router';
 
 const Content = ({posts, handleDelete, user}) => {
@@ -18,7 +18,7 @@ const Content = ({posts, handleDelete, user}) => {
         <div>
             <button onClick = {createNew} >Create a new post</button>
             {posts.map(post => (
-                <PostContent
+                <PostContainer
                     key = {post.id}
                     post = {post} 
                     handleDelete={handleDelete}
