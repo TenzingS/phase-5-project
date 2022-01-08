@@ -23,6 +23,12 @@ function App() {
 
   return (
     <div className="App">
+      <div class="ball">
+      <div class="stroke pos1"></div>
+      <div class="stroke pos2"></div>
+      <div class="stroke2 pos3"></div>
+      <div class="stroke2 pos4"></div>
+    </div>
       <BrowserRouter>
         <Route exact path = "/">
           <Login setUser={setUser} user={user}/>
@@ -42,9 +48,9 @@ function App() {
         {/* <Route exact path = "/newcomment">
           <NewComment user={user}/>
         </Route> */}
-        <Route exact path = "/showcomments">
+        {/* <Route exact path = "/showcomments">
           <Comments user={user}/>
-        </Route>
+        </Route> */}
       </BrowserRouter>
     </div>
   );

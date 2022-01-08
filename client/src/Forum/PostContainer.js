@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import EditPost from './EditPost';
-// import Comment from './Comment';
+import Comments from './Comments';
 
 const PostContainer = ({user, post, handleDelete}) => {
 
@@ -13,37 +13,26 @@ const PostContainer = ({user, post, handleDelete}) => {
     }
 
     function editPost(post){
-            history.push(`/editpost/${post.id}`)
+        <EditPost post={post}/> 
+        && history.push(`/editpost/${post.id}`)
     }
 
     const renderButtons = () => {
         if (post.user.id === user.id){
-            return <div>
-                <button onClick ={withComments} >Comment</button>
-                <button onClick={() => editPost(post)} >Edit post</button>
-                <button onClick= {() => handleDelete(post)}>Delete Post</button>
+            return <div className='buttons'>
+                <button onClick={() => editPost(post)} >Edit</button>
+                <button onClick= {() => handleDelete(post)}>Delete</button>
             </div>
-        } else {
-            return <div><button onClick ={withComments} >Comment</button></div>
             }
         }
 
     return (
         <div className="post">
             <ul >
-                <div>
+                <div className='post1' onClick={withComments}>
                 <h3>{post.header}</h3>
                 <p>{post.body}</p>
                 <br/>
-                {/* <ul>
-                {comments.map((comment, index) => {
-                    <Comment 
-                        key={post.id || index}
-                        comment={comment.comment} 
-                        post={post} 
-                        />
-                        {console.log(comment)}
-                })}</ul> */}
                 </div>
                 {renderButtons()}
             </ul>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // import NewComment from './NewComment';
 
 const Comments = ({user}) => {
-    const [backendComments, setBackendComments]
+    const [backendComments, setBackendComments] = []
 
     useEffect(() => {
         fetch('/comments')

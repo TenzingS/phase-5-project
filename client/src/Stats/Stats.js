@@ -54,7 +54,7 @@ const Stats = ({user, setUser}) => {
         <div>
             <h4>Welcome {user.name}!</h4>
             <button onClick = {goDiscussion} >Go to Discussion Board</button>
-            <button onClick = {logOut} >Log Out</button>
+            <button classname="statsbtn1" onClick = {logOut} >Log Out</button>
             <h1>NBA Stats Today</h1>
             <div>
                 {/* <SearchTeams /> */}

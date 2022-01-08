@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Search from "./Search";
 import Content from './Content';
 import News from './News';
+import NewPost from './NewPost';
 
 const DiscussionBoard = ({setUser, user})=> {
 
@@ -70,20 +71,29 @@ const DiscussionBoard = ({setUser, user})=> {
             setNews(data.articles))
         },[])
 
+    function createNew(){
+        <div >
+            <NewPost />
+            {history.push('/createpost')}
+        </div>
+    }
+
     return (
         <div>
-            <h4>Welcome {user.name}!</h4>
-            <button onClick = {statsPage} >Go to NBA Stats</button>
-            <button onClick = {logOut} >Log Out</button>
-            <h1>NBA Today</h1>
-            <div>
-                <Search searchInput={searchInput}/>
+            <h4 className='viewing-user'>Viewing as {user.name}</h4>
+            <button className='logout' onClick = {logOut} >Log Out</button>
+            <br />
+            <h1 className='nba-today'>NBA Today</h1>
+            <button className='statsbtn' onClick = {statsPage} >Search Player Stats</button>
+            <Search searchInput={searchInput}/>
+            <button className='create-new' onClick = {createNew} >Create a new post</button>
+            <br />
+            <div className='main-wrapper'>
                 <Content
                 posts={filterSearch()}
                 handleDelete={handleDelete}
                 user={user}/>
                 <News news={news} />
-
             </div>
         </div>
     );

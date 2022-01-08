@@ -56,7 +56,7 @@ const Login = ({setUser}) => {
 
     return (
         <div>
-            <h1>Welcome to NBA Today! </h1>
+            <h1 className='nba-today'>Welcome to NBA Today! </h1>
             <div className="LoginFormContainer" >
             <form onSubmit = {logIn}>
                 <h3>Login!</h3>

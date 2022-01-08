@@ -3,15 +3,25 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router';
 
-const EditPost = ({post}) => {
-
-    console.log(post)
+const EditPost = () => {
 
     let history = useHistory();
     const params = useParams();
+    console.log(params)
 
+    const [oldHeader, setOldHeader] = useState('')
+    const [oldBody, setOldBody] = useState('')
     const [editHeader, setEditHeader] = useState('')
     const [editBody, setEditBody] = useState('')
+
+    useEffect(() => {
+        fetch(`/posts/${params}`)
+        .then(res => res.json())
+        .then(data => { console.log(data)
+            // setOldHeader(data.header)
+            // setOldBody(data.body)
+        })
+    }, [] )
 
     function handleEditHeader(e){
         setEditHeader(e.target.value)
@@ -48,13 +58,13 @@ const EditPost = ({post}) => {
         <div>
             <form onSubmit={handleEdits} >
                 <label>Edit post:</label>
-                <h3>{post}</h3>
+                <h3>{oldHeader}</h3>
                 <textarea 
-                    placeholder={"Edit header here..." }
+                    placeholder="Edit header here..." 
                     onChange={handleEditHeader} 
                     value={editHeader} />
                     <br/>
-                <h3>{post}</h3>
+                <h3>{oldBody}</h3>
                 <textarea 
                     placeholder="Edit body here..." 
                     onChange={handleEditBody} 

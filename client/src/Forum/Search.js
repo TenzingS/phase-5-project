@@ -11,6 +11,7 @@ function Search({ searchInput }) {
   return (
       <form onSubmit= {handleSubmit}>
         <input 
+          className="search"
           id="search-bar" 
           type="text" 
           placeholder="Search Posts" 

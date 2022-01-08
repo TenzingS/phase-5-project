@@ -7,7 +7,8 @@ class SearchPlayers extends Component {
       this.state={
         playerName: null,
         playerStats: {},
-        player:[]
+        player:[],
+        playerTeam:[]
       }
     }
   
@@ -32,6 +33,7 @@ class SearchPlayers extends Component {
     .then(async res => {
       console.log(res.data.data[0])
       this.setState({player: res.data.data[0]})
+      this.setState({playerTeam: res.data.data[0].team})
     }).catch(err => {
       console.log(err)
     })
@@ -85,6 +87,10 @@ class SearchPlayers extends Component {
        Height: {this.state.player["height_feet"]} feet {this.state.player["height_inches"]} inches
        <br/>
        Position: {this.state.player["position"]}
+       <br/>
+       Team: {this.state.playerTeam["full_name"]}
+       <br />
+       Conference: {this.state.playerTeam["conference"]}
        
        <br />
        Games played: {this.state.playerStats["games_played"]}
