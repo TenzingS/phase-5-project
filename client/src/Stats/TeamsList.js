@@ -1,7 +1,7 @@
 import React from 'react';
 import TeamContainer from './TeamContainer';
 
-const TeamsList = ({teams, players}) => {
+const TeamsList = ({teams}) => {
 
 
     return (
@@ -10,8 +10,8 @@ const TeamsList = ({teams, players}) => {
                         <TeamContainer
                             key = {team.id}
                             team = {team} 
-                            players={players} />
-            ))}
+                         />
+            ))};
         </div>
     )
 }

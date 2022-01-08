@@ -1,16 +1,38 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Teams from './Teams';
-import Players from './Players';
+import PlayersList from './PlayersList';
+import SearchPlayers from './SearchPlayers';
+
 
 const Stats = ({user, setUser}) => {
     
-    const [teams, setTeams] = useState([])
-    const [searchTeams, setSearchTeams] = useState([])
-
+    // const [teams, setTeams] = useState([])
+    // const [searchTeams, setSearchTeams] = useState([])
 
     let history = useHistory();
+
+    // useEffect(() => {
+    //     fetch('/teams').then(r => {
+    //             if (r.ok) {
+    //                 r.json().then((data) => setTeams(data.data));
+    //             }
+    //         });
+    //     }, []);
+                    
+
+    // function searchInputTeams(input){
+    //     setSearchTeams(input)
+    // }
+
+    // function filterSearchTeams(){
+    //     if(searchTeams.length > 0){
+    //       return teams.filter(team => team.full_name.toLowerCase().includes(searchTeams.toLowerCase()))
+    //     } else{
+        
+    //       return teams
+    //     }
+    //   }
+    
     
     function goDiscussion(){
         history.push('/home')
@@ -41,11 +63,24 @@ const Stats = ({user, setUser}) => {
         <div>
             <h4>Welcome {user.name}!</h4>
             <button onClick = {goDiscussion} >Go to Discussion Board</button>
+<<<<<<< HEAD
             <button onClick = {logOut} >Log Out</button>
             <br/>
             <button onClick = {gotoTeams} >Search Teams</button>
             <button onClick = {gotoPlayers} >Search Players</button>
             <h1>NBA Stat Leaders</h1>
+=======
+            <button classname="statsbtn1" onClick = {logOut} >Log Out</button>
+            <h1>NBA Stats Today</h1>
+            <div>
+                {/* <SearchTeams /> */}
+                <SearchPlayers />
+                {/* <TeamsList teams={filterSearchTeams()} /> */}
+                <PlayersList />
+               
+
+            </div>
+>>>>>>> nba-today
         </div>
     );
 }

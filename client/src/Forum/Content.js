@@ -1,24 +1,13 @@
 import React from 'react';
 import NewPost from './NewPost';
-import PostContent from './PostContent';
-import { useHistory } from 'react-router';
+import PostContainer from './PostContainer';
 
 const Content = ({posts, handleDelete, user}) => {
 
-    let history = useHistory();
-
-    function createNew(){
-        <div>
-            <NewPost />
-            {history.push('/createpost')}
-        </div>
-    }
-
     return (
-        <div>
-            <button onClick = {createNew} >Create a new post</button>
+        <div className='content'>
             {posts.map(post => (
-                <PostContent
+                <PostContainer
                     key = {post.id}
                     post = {post} 
                     handleDelete={handleDelete}

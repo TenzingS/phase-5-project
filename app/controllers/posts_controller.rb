@@ -9,9 +9,9 @@ class PostsController < ApplicationController
       def show
         post = Post.find_by(id: params[:id])
         if post
-            render json: post
+          render json: post
         else
-            render json: {error: "Not Found"}, status: :not_found
+          render json: {error: "Not Found"}, status: :not_found
         end
       end
     

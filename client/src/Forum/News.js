@@ -2,7 +2,7 @@ import React from 'react';
 
 const News = ({news}) => {
     return (
-        <div>
+        <div className='news'>
             <h4>Latest NBA news:</h4>
             {news.map((post, pos) => (
                 <li key={pos}>

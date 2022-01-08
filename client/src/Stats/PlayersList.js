@@ -1,17 +1,18 @@
 import React from 'react';
-import PlayerContainer from './PlayerContainer';
 
-const PlayersList = ({players, team}) => {
 
+const PlayersList = ({team}) => {
+    
     return (
         <div>
-            {team}
-            <br/>
-            {players.map((player, key) => (
+            {/* {team}
+            <ul id="playerlist">
+            {players.map(player => (
                 <PlayerContainer
                 key = {player.id}
                 player = {player} />
             ))}
+            </ul> */}
         </div>
     );
 }

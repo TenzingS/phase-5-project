@@ -1,13 +1,30 @@
 import React from 'react';
-import PostContainer from './PostContainer';
+// import { useState, useEffect } from 'react';
+// import PostContainer from './PostContainer';
 
 const PostContent = ({user, post, handleDelete}) => {
 
+    // const [comments, setComments] = useState([])
+
+    // useEffect(() => {
+    //     let isMounted = true;
+    //     fetch(`/comments`).then((r) => {
+    //         if (r.ok) {
+    //             r.json().then((data) => {
+    //                 if(isMounted) setComments(data);
+    //             });
+    //           return () => {isMounted = false}};
+    //         });
+    //       }, []);
    
     return (
         <PostContainer 
             handleDelete={handleDelete} user={user} 
             post={post} />
+<<<<<<< HEAD
+=======
+        </div>
+>>>>>>> nba-today
     );
 }
 
