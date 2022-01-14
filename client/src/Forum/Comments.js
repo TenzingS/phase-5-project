@@ -52,7 +52,7 @@ const Comments = ({user}) => {
                 <p className='post-body'>{post.body}</p>
                 {renderButtons()}
                 <br/>
-                {/* {post.comments.map(comment => (comment.comment))} */}
+                {/* {post.comments.map(comment => (comment.0.comment))} */}
             </ul>
         </div>
 
