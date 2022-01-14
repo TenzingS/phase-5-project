@@ -15,11 +15,11 @@ const EditPost = () => {
     const [editBody, setEditBody] = useState('')
 
     useEffect(() => {
-        fetch(`/posts/${params}`)
+        fetch(`/posts/${params.id}`)
         .then(res => res.json())
-        .then(data => { console.log(data)
-            // setOldHeader(data.header)
-            // setOldBody(data.body)
+        .then(data => {
+            setOldHeader(data.header)
+            setOldBody(data.body)
         })
     }, [] )
 
@@ -56,7 +56,7 @@ const EditPost = () => {
 
     return (
         <div>
-            <form onSubmit={handleEdits} >
+            <form className='edit-post' onSubmit={handleEdits} >
                 <label>Edit post:</label>
                 <h3>{oldHeader}</h3>
                 <textarea 

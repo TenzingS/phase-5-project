@@ -42,8 +42,7 @@
   flex-direction:row;
 }
 
-.App {
-  background-color: #FFE8BE;
+body {
   background-image: url('https://www.psdgraphics.com/wp-content/uploads/2013/05/basketball-floor-texture.jpg');
 }
 
@@ -82,12 +81,25 @@ a:active { text-decoration: none; color:teal; }
   text-align: left;
 }
 
-.post1 {
-  cursor: pointer
+.post-header {
+  cursor: pointer;
+  color: orangered;
+}
+
+.post-body {
+  color: #323954;
 }
 
 .buttons {
-  cursor: pointer
+  cursor: pointer;
+  font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.edit-post {
+  text-align: center;
 }
 
 .playercard {
@@ -103,9 +115,12 @@ a:active { text-decoration: none; color:teal; }
   font-weight: 550;
 }
 
+.top-line {
+  text-align: center;
+}
+
 .search {
-  text-align: left;
-  width: 400px
+  width: 450px
 }
 
 .main-wrapper {
@@ -113,27 +128,30 @@ a:active { text-decoration: none; color:teal; }
   overflow: hidden; /* will contain if #first is longer than #second */
 }
 .content {
-  width: auto;
+  width: 90%;
   float:left; /* add this */
   border: 1px solid black;
 }
 .news {
-  width: 300px;
+  width: 350px;
   border: 1px solid black;
   overflow: hidden; /* if you don't want #second to wrap below #first */
+  color: #444444;
+  font-family: Verdana,Geneva,sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  background-color: whitesmoke;
+
 }
 
 .create-new {
   float: left;
 }
 
-.logout {
+.view-wrapper {
+  margin-left: auto;
+  margin-right:auto;
   float: right;
-}
-
-.viewing-user {
-  float:left;
-
 }
 
 .ball{
@@ -201,32 +219,15 @@ left:-100px;
   }
 }
 
-.nba-today h1 {
-  font-size: 3rem;
+.nba-today {
   margin: 0;
-  line-height: 50px;
-  animation: example1 5s cubic-bezier(.4,0,.2,1) forwards;
+  padding: 0;
+  text-align: center; 
+  padding: 10px;
+  color: black;
 }
 
-@keyframes nba-today {
-  from{
-    transform: translateX(107%);
-  }
-  38% {
-    opacity: 1;
-  }
-  42% {    
-    transform: translateX(35%);
-  }
-  60% {
-    opacity: 0;
-    transform: translateX(35%);
-  }
-  62% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.content {
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

@@ -49,29 +49,24 @@ const Stats = ({user, setUser}) => {
         history.push('/')
         }
 
-    function gotoTeams(){
-        <Teams />
-        history.push('/teams')
-    }
+    // function gotoTeams(){
+    //     <Teams />
+    //     history.push('/teams')
+    // }
 
-    function gotoPlayers(){
-        <Players />
-        history.push('/players')
-    }
+    // function gotoPlayers(){
+    //     <Players />
+    //     history.push('/players')
+    // }
 
     return (
         <div>
-            <h4>Welcome {user.name}!</h4>
+            <div className='view-wrapper'>
+                <h4>User: {user.name}</h4>
+                <button onClick = {logOut} >Log Out</button>
+            </div>
             <button onClick = {goDiscussion} >Go to Discussion Board</button>
-<<<<<<< HEAD
-            <button onClick = {logOut} >Log Out</button>
-            <br/>
-            <button onClick = {gotoTeams} >Search Teams</button>
-            <button onClick = {gotoPlayers} >Search Players</button>
-            <h1>NBA Stat Leaders</h1>
-=======
-            <button classname="statsbtn1" onClick = {logOut} >Log Out</button>
-            <h1>NBA Stats Today</h1>
+            <h1 className='nba-today'>NBA Stats Today</h1>
             <div>
                 {/* <SearchTeams /> */}
                 <SearchPlayers />
@@ -80,7 +75,6 @@ const Stats = ({user, setUser}) => {
                
 
             </div>
->>>>>>> nba-today
         </div>
     );
 }

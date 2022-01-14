@@ -7,14 +7,12 @@ const PostContainer = ({user, post, handleDelete}) => {
 
     let history = useHistory();
 
-    const withComments = () => {
-        
-        history.push('/showcomments')
+    function withComments(post) {
+        history.push(`/post/${post.id}`)
     }
 
     function editPost(post){
-        <EditPost post={post}/> 
-        && history.push(`/editpost/${post.id}`)
+        history.push(`/editpost/${post.id}`)
     }
 
     const renderButtons = () => {
@@ -29,25 +27,14 @@ const PostContainer = ({user, post, handleDelete}) => {
     return (
         <div className="post">
             <ul >
-<<<<<<< HEAD
-                <div>
-                <h3 >{post.header}</h3>
-=======
-                <div className='post1' onClick={withComments}>
-                <h3>{post.header}</h3>
->>>>>>> nba-today
-                <p>{post.body}</p>
+                <div onClick={() => withComments(post)}>
+                <h3 className='post-header'>{post.header}</h3>
+                <p className='post-body'>{post.body}</p>
                 <br/>
                 </div>
                 {renderButtons()}
             </ul>
-<<<<<<< HEAD
-            <button onClick={gotoComments} >Comment</button>
-            <button onClick={editPost} >Edit post</button>
-            <button onClick= {() => handleDelete(post)}>Delete Post</button>
-=======
             <hr/>
->>>>>>> nba-today
         </div>
     );
 }

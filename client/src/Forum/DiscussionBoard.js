@@ -65,12 +65,12 @@ const DiscussionBoard = ({setUser, user})=> {
         history.push('/stats')
     }
 
-    // useEffect(() => {
-    //     fetch('/news')
-    //     .then(res => res.json())
-    //     .then(data => 
-    //          setNews(data.articles))
-    //     },[])
+    useEffect(() => {
+        fetch('/news')
+        .then(res => res.json())
+        .then(data => 
+             setNews(data.articles))
+        },[])
 
     function createNew(){
         <div >
@@ -80,14 +80,18 @@ const DiscussionBoard = ({setUser, user})=> {
     }
 
     return (
-        <div>
-            <h4 className='viewing-user'>Viewing as {user.name}</h4>
-            <button className='logout' onClick = {logOut} >Log Out</button>
+        <div className='body'>
+            <div className='view-wrapper'>
+                <h4 className='viewing-user'>User: {user.name}</h4>
+                <button className='logout' onClick = {logOut} >Log Out</button>
+            </div>
             <br />
             <h1 className='nba-today'>NBA Today</h1>
-            <button className='statsbtn' onClick = {statsPage} >Search Player Stats</button>
-            <Search searchInput={searchInput}/>
-            <button className='create-new' onClick = {createNew} >Create a new post</button>
+            <div className='top-line'>
+                <button onClick = {statsPage} >Search Player Stats</button>
+                <Search searchInput={searchInput}/>
+                <button className='create-new' onClick = {createNew} >Create a new post</button>
+            </div>
             <br />
             <div className='main-wrapper'>
                 <Content

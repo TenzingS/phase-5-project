@@ -1,24 +1,65 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-// import NewComment from './NewComment';
+import { useHistory } from 'react-router';
+import { useParams } from 'react-router'
 
 const Comments = ({user}) => {
-    const [backendComments, setBackendComments] = []
+
+    let history = useHistory();
+    const params = useParams(); 
+    console.log(params);
+
+    const [post, setPost] = useState([])
 
     useEffect(() => {
-        fetch('/comments')
+        fetch(`/posts/${params.id}`)
         .then(res => res.json())
-        .then(data => setBackendComments(data))
+        .then(data => setPost(data))
     }, [])
 
-    console.log(backendComments)
+    function editPost(post){
+        history.push(`/editpost/${post.id}`)
+    }
+
+    function handleDelete(post){
+        fetch(`/posts/${post.id}`, 
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((r) => { 
+        if (r.ok) {
+        console.log('Item was deleted!')
+        history.push('/home')
+    }})
+    }
+
+    const renderButtons = () => {
+        console.log(post)
+        if (post.id === user.id){
+            return <div className='buttons'>
+                <button onClick={() => editPost(post)} >Edit</button>
+                <button onClick= {() => handleDelete(post)}>Delete</button>
+            </div>
+           }
+        }
 
     return (
-        <div>
-            
+        <div className="content">
+            <ul>
+                <h3 className='post-header'>{post.header}</h3>
+                <p className='post-body'>{post.body}</p>
+                {renderButtons()}
+                <br/>
+                {/* {post.comments.map(comment => (comment.comment))} */}
+            </ul>
         </div>
+
     );
 }
+
+export default Comments;
 // const Comment = ({post, comment}) => {
 
 //     let history = useHistory();
@@ -70,4 +111,3 @@ const Comments = ({user}) => {
 //     );
 // }
 
-export default Comments;

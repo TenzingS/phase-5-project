@@ -7,7 +7,7 @@ import NewPost from "./Forum/NewPost";
 import EditPost from './Forum/EditPost';
 import Stats from './Stats/Stats';
 // import NewComment from './Forum/NewComment';
-import Comments from './Forum/Comment';
+import Comments from './Forum/Comments';
 
 function App() {
     const [user, setUser] = useState(false);
@@ -22,13 +22,6 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div class="ball">
-      <div class="stroke pos1"></div>
-      <div class="stroke pos2"></div>
-      <div class="stroke2 pos3"></div>
-      <div class="stroke2 pos4"></div>
-    </div>
       <BrowserRouter>
         <Route exact path = "/">
           <Login setUser={setUser} user={user}/>
@@ -42,20 +35,13 @@ function App() {
         <Route exact path = '/editpost/:id'>
           <EditPost />
         </Route>
-        <Route exact path = '/post/:id'>
-          <PostContainer />
-        </Route>
         <Route exact path = "/stats">
           <Stats user={user} setUser={setUser}/>
         </Route>
-        {/* <Route exact path = "/newcomment">
-          <NewComment user={user}/>
-        </Route> */}
-        {/* <Route exact path = "/showcomments">
+        <Route exact path = "/post/:id">
           <Comments user={user}/>
-        </Route> */}
+        </Route>
       </BrowserRouter>
-    </div>
   );
 }
 

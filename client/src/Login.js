@@ -55,6 +55,13 @@ const Login = ({setUser}) => {
         }
 
     return (
+    <div className="App">
+      <div class="ball">
+      <div class="stroke pos1"></div>
+      <div class="stroke pos2"></div>
+      <div class="stroke2 pos3"></div>
+      <div class="stroke2 pos4"></div>
+      </div>
         <div>
             <h1 className='nba-today'>Welcome to NBA Today! </h1>
             <div className="LoginFormContainer" >
@@ -134,6 +141,7 @@ const Login = ({setUser}) => {
                 </div>
             </form>
             </div>
+        </div>
         </div>
     );
 }

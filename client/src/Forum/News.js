@@ -4,7 +4,7 @@ const News = ({news}) => {
     return (
         <div className='news'>
             <h4>Latest NBA news:</h4>
-            {news.map((post, pos) => (
+            {news.slice(0,10).map((post, pos) => (
                 <li key={pos}>
                 <a href={post.url} target="_blank" rel="noreferrer">
                     {post.title}
@@ -13,7 +13,7 @@ const News = ({news}) => {
             </li>   
                 )
             )}
-        </div>
+        </div> 
     );
 }
 
