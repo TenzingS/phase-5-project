@@ -2,19 +2,22 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router'
+import Comment from './Comment';
+import NewComment from './NewComment';
 
-const Comments = ({user}) => {
+const Comments = ({setUser, user}) => {
 
     let history = useHistory();
     const params = useParams(); 
-    console.log(params);
 
-    const [post, setPost] = useState([])
+    const [post, setPost] = useState([]);
 
     useEffect(() => {
         fetch(`/posts/${params.id}`)
         .then(res => res.json())
-        .then(data => setPost(data))
+        .then(data => {
+            setPost(data)
+        })
     }, [])
 
     function editPost(post){
@@ -36,78 +39,71 @@ const Comments = ({user}) => {
     }
 
     const renderButtons = () => {
-        console.log(post)
-        if (post.id === user.id){
-            return <div className='buttons'>
-                <button onClick={() => editPost(post)} >Edit</button>
-                <button onClick= {() => handleDelete(post)}>Delete</button>
-            </div>
-           }
+        if(post.user){
+            if (post.user.id == user.id){
+                return <div className='buttons'>
+                    <button onClick={() => editPost(post)} >Edit</button>
+                    <button onClick= {() => handleDelete(post)}>Delete</button>
+                </div>
+            }
+        }}
+
+    function logOut() {
+        fetch('/logout', {
+            method: 'DELETE' })
+        .then(r => {
+            if (r.ok) {
+            setUser(null);
+            }
+        });
+        history.push('/')
         }
 
+    function goDiscussion(){
+            history.push('/home')
+        }
+
+    let itemsToRender;
+    if (post.comments) {
+        itemsToRender = post.comments.map((comment) => (
+            <Comment 
+                key = {comment.id}
+                comment = {comment}
+                user={user}
+                post={post} />
+        ))
+    }
+ 
+    const commentForm = () => {
+        return (
+            <form>
+                <textarea />
+            </form>
+        )
+    }
+
     return (
+        <div className='body'>
+        <div className='view-wrapper'>
+                <h4 className='viewing-user'>User: {user.name}</h4>
+                <button className='logout' onClick = {logOut} >Log Out</button>
+        </div>
+        <br />
+        <h1 className='nba-today'>NBA Today</h1>
+        <button onClick = {goDiscussion} >Go to Discussion Board</button>
         <div className="content">
             <ul>
                 <h3 className='post-header'>{post.header}</h3>
                 <p className='post-body'>{post.body}</p>
                 {renderButtons()}
                 <br/>
-                {/* {post.comments.map(comment => (comment.0.comment))} */}
+                {itemsToRender}
+                <NewComment user={user}/>
             </ul>
+        </div>
         </div>
 
     );
 }
 
 export default Comments;
-// const Comment = ({post, comment}) => {
-
-//     let history = useHistory();
-
-// console.log(post)
-// console.log(comment)
-
-//     function addComment(){
-//             <NewComment />
-//     }
-
-//     function handleDelete(comment){
-//         fetch(`/comments/${comment.id}`, 
-//     {
-//       method: 'DELETE',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     }).then((r) => { 
-//         if (r.ok) {
-//         console.log('Item was deleted!')
-//     }})
-//     }
-
-//     function backtoHome(){
-//         history.push('/home')
-//     }
-
-//     const renderComments = (comment) => {
-//         if (comment.post.id === post.id ){
-//             return <p> {comment.comment} </p>
-//         }
-//     }
-
-//     return (
-//         <div>
-//             <button onClick={backtoHome} >Back to Home</button>
-//             <ul>
-//             <h3>{post.header}</h3>
-//             <p>{post.body}</p>
-//             <hr/>
-//             <p>{renderComments()}</p>  
-//             <br/>
-//             </ul>
-//             <button onClick={addComment}>Add a comment</button>
-//             <button onClick= {() => handleDelete(comment)}>Delete Comment</button>
-            
-//         </div>
-//     );
-// }
-

@@ -35,11 +35,12 @@ const NewPost = ({user}) => {
     }
     
     return (
-        <div>
+        <div className='edit-post'>
             <h4>Create a new post {user.name}!</h4>
             <form onSubmit={handleSubmit} >
-            <input placeholder="Put header here..." onChange={handleHeader} value={headerData} />
-            <textarea placeholder="Put body here..." onChange={handleBody} value={bodyData} />
+            <input className='inputarea' placeholder="Put header here..." onChange={handleHeader} value={headerData} />
+            <br/>
+            <textarea className='inputarea' placeholder="Put body here..." onChange={handleBody} value={bodyData} />
             <div>
                 <input type="submit" value="Post"/>
                 <button onClick={cancelPost} >Cancel</button>

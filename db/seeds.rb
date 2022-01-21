@@ -19,7 +19,8 @@ Post.create(
 
     Comment.create(name: "Ten", comment:"Yeah if they're healthy, the season is down to those 2 teams.", user_id: 1, post_id: 2)
 
-    Comment.create(name: "Ten", comment: "I agree!", user_id: 1, post_id: 2, parent_id: 1)
+    Comment.create(name: "Ten", comment: "I agree!", user_id: 1, post_id: 2)
+
 
     
 puts "Done seeding.."

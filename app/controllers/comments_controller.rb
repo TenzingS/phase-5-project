@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
-
+    wrap_parameters format: []
     def index
         comments = Comment.all
         render json: comments
     end
 
     def show
-        comment = Comment.find_by(id: params[:id])
+        comment = Comment.find_by(id:params[:id])
         if comment 
             render json: comment
         else
@@ -29,6 +29,6 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.permit(:name, :comment)
+        params.permit(:comment)
     end
 end

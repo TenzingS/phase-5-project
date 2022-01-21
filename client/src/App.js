@@ -39,7 +39,7 @@ function App() {
           <Stats user={user} setUser={setUser}/>
         </Route>
         <Route exact path = "/post/:id">
-          <Comments user={user}/>
+          <Comments setUser={setUser} user={user}/>
         </Route>
       </BrowserRouter>
   );

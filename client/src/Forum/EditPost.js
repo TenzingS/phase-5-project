@@ -50,22 +50,24 @@ const EditPost = () => {
     })}
 
     function cancelPost(){
-        history.push('/home')
+        history.push(`/post/${params.id}`)
     }
-
+ 
 
     return (
         <div>
             <form className='edit-post' onSubmit={handleEdits} >
-                <label>Edit post:</label>
+                <h2>Edit your post:</h2>
                 <h3>{oldHeader}</h3>
                 <textarea 
+                    className='inputarea'
                     placeholder="Edit header here..." 
                     onChange={handleEditHeader} 
                     value={editHeader} />
                     <br/>
                 <h3>{oldBody}</h3>
                 <textarea 
+                    className='inputarea'
                     placeholder="Edit body here..." 
                     onChange={handleEditBody} 
                     value={editBody} />

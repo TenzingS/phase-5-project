@@ -76,6 +76,15 @@ a:hover { text-decoration: none; color:orangered; }
 a:focus { text-decoration: none; color:orange; }
 a:active { text-decoration: none; color:teal; }
 
+.inputarea {
+  width: 60%;
+  height: 80px;
+}
+
+#comment-name {
+  text-align: right;
+}
+
 .post {
   width: 500 px;
   text-align: left;
