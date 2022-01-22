@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
     wrap_parameters format: []
     def index
-        comments = Comment.all
+        post = Post.find_by(id: params[:post_id])
+        comments = post.comments
         render json: comments
     end
 
     def show
-        comment = Comment.find_by(id:params[:id])
+        post = Post.find_by(id: params[:post_id])
+        comment = post.comments.find_by(id: params[:id])
         if comment 
             render json: comment
         else
@@ -15,9 +17,13 @@ class CommentsController < ApplicationController
     end
 
     def create
-        post = Post.find(params[:post_id])
+        post = Post.find_by(id: params[:post_id])
         comment = post.comments.create!(comment_params)
-        render json: comment, status: :created
+        if comment
+            render json: comment, status: :created
+        else
+            render json: { error: comment.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     def destroy

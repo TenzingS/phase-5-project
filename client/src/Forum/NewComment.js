@@ -15,13 +15,14 @@ const Newcomment = ({user}) => {
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(`posts/${params.id}/comments`)
+        const commentData = {comment: newComment}
+        console.log(commentData)
         fetch(`/posts/${params.id}/comments`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({comment: newComment, user_id: user.id, name: user.name})
+            body: JSON.stringify(commentData)
         })
         .then(r => r.json())
         .catch((err) => console.log('error'))

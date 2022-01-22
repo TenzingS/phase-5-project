@@ -25,7 +25,7 @@ const NewPost = ({user}) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({header: headerData, body: bodyData})
+            body: JSON.stringify({header: headerData, body: bodyData, user_id: user.id})
         })
         history.push('/home')
     }

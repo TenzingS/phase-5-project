@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  wrap_parameters format: []
 
   before_action :authorize, only: [:update, :destroy]
 
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
       end
     
       def create
-          post = @current_user.Post.create!(post_params)
+          post = Post.create!(post_params)
           render json: post, status: :created 
       end
 
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
       private
     
       def post_params
-        params.permit(:header, :body)
+        params.permit(:header, :body, :user_id)
       end
 
 end
