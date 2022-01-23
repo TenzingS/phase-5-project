@@ -73,14 +73,6 @@ const Comments = ({setUser, user}) => {
                 post={post} />
         ))
     }
- 
-    const commentForm = () => {
-        return (
-            <form>
-                <textarea />
-            </form>
-        )
-    }
 
     return (
         <div className='body'>

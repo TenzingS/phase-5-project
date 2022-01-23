@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router';
 
-const EditPost = () => {
+const EditPost = ({user}) => {
 
     let history = useHistory();
     const params = useParams();
-    console.log(params)
 
     const [oldHeader, setOldHeader] = useState('')
     const [oldBody, setOldBody] = useState('')
@@ -34,20 +33,46 @@ const EditPost = () => {
 
     function handleEdits(e){
         e.preventDefault();
-        
-        console.log(params)
+        if (!editHeader){
         fetch(`/posts/${params.id}`,
         {
             method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({header: editHeader, body: editBody})
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({body: editBody, user_id: user.id, name: user.name})
         })
-        .then(r => {
-             if (r.ok){
-                history.push('/home')}
-    })}
+        .then((r) => r.json())
+        .then(updatedData => {
+                setOldBody(updatedData.body)
+        })}
+        if (!editBody){
+            fetch(`/posts/${params.id}`,
+        {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({header: editHeader, user_id: user.id, name: user.name})
+        })
+        .then((r) => r.json())
+        .then(updatedData => {
+                setOldHeader(updatedData.header)
+        })
+        }
+        else {
+            fetch(`/posts/${params.id}`,
+        {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({header: editHeader, body: editBody, user_id: user.id, name: user.name})
+        })
+        .then((r) => r.json())
+        .then(updatedData => {
+            if (updatedData.header || updatedData.body) {
+                setOldHeader(updatedData.header)
+                setOldBody(updatedData.body)
+            }
+        })
+        }
+        history.push(`/post/${params.id}`)
+    }
 
     function cancelPost(){
         history.push(`/post/${params.id}`)

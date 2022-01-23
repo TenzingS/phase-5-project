@@ -15,7 +15,7 @@ const Newcomment = ({user}) => {
 
     function handleSubmit(e){
         e.preventDefault();
-        const commentData = {comment: newComment}
+        const commentData = {name: user.name, comment: newComment, user_id: user.id}
         console.log(commentData)
         fetch(`/posts/${params.id}/comments`, {
             method: 'POST',
@@ -25,7 +25,9 @@ const Newcomment = ({user}) => {
             body: JSON.stringify(commentData)
         })
         .then(r => r.json())
+        .then(setNewComment)
         .catch((err) => console.log('error'))
+        history.push(`/post/${params.id}`)
     }
 
     function cancelComment(){

@@ -33,7 +33,7 @@ function App() {
           <NewPost user={user}/>
         </Route>
         <Route exact path = '/editpost/:id'>
-          <EditPost />
+          <EditPost user={user} />
         </Route>
         <Route exact path = "/stats">
           <Stats user={user} setUser={setUser}/>
