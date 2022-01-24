@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useState, useEffect } from "react";
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router'
@@ -66,11 +66,11 @@ const Comments = ({setUser, user}) => {
     let itemsToRender;
     if (post.comments) {
         itemsToRender = post.comments.map((comment) => (
-            <Comment 
-                key = {comment.id}
-                comment = {comment}
-                user={user}
-                post={post} />
+                <Comment 
+                    key = {comment.id}
+                    comment = {comment}
+                    user={user}
+                    post={post} />
         ))
     }
 

@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
+import RegComment from './RegComment';
 import EditComment from './EditComment'
 
 const Comment = ({comment, user, post}) => {
-
+    const [edit, setEdit] = useState(null)
     const params = useParams();
-
-    function editedComment(comment){
-        return <EditComment comment={comment} />
-    }
 
     function handleDelete(comment){
         fetch(`/posts/${params.id}/comments/${comment.id}`, 
@@ -27,18 +24,22 @@ const Comment = ({comment, user, post}) => {
     const renderButtons = () => {
         if (comment.name === user.name){
             return <div className='buttons'>
-                <button onClick= {() => editedComment(comment)} >Edit</button>
+                <button onClick= {() => setEdit(comment.id)} >Edit</button>
                 <button onClick= {() => handleDelete(comment)} >Delete</button>
             </div>
            }
         }
     
     return (
-        <div className='comment-div'>
-            <div>{comment.comment}</div>
-            {renderButtons()}
-            <p id='comment-name'>- {comment.name}</p>
-        </div>
+        <Fragment>
+        {edit === comment.id ? (
+        <EditComment comment={comment} user={user} setEdit={setEdit} />
+        ) : (
+        <RegComment comment={comment} />
+        )}
+        {edit === comment.id? '' : renderButtons()}
+        <br/>
+        </Fragment>
     );
 }
 
