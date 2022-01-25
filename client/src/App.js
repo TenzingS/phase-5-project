@@ -32,7 +32,7 @@ function App() {
           <DiscussionBoard setUser={setUser} user={user}/>
         </Route>
         <Route exact path = "/createpost">
-          <NewPost user={user}/>
+          <NewPost user={user} setUser={setUser} />
         </Route>
         <Route exact path = '/editpost/:id'>
           <EditPost user={user} />

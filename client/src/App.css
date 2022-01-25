@@ -81,9 +81,6 @@ a:active { text-decoration: none; color:teal; }
   height: 80px;
 }
 
-#comment-name {
-  text-align: right;
-}
 
 .post {
   width: 500 px;
@@ -95,8 +92,14 @@ a:active { text-decoration: none; color:teal; }
   color: orangered;
 }
 
-.post-body {
-  color: #323954;
+.post-header:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.post-body:hover {
+  color: orangered;
+  cursor: pointer;
 }
 
 .buttons {
@@ -107,8 +110,12 @@ a:active { text-decoration: none; color:teal; }
     text-transform: uppercase;
 }
 
-.edit-post {
+#edit-post {
   text-align: center;
+}
+
+.discussion {
+  text-align: left;
 }
 
 .playercard {

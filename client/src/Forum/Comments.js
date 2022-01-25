@@ -43,10 +43,16 @@ const Comments = ({setUser, user}) => {
     const renderButtons = () => {
         if(post.user){
             if (post.user.id === user.id){
-                return <div className='buttons'>
+                return <div>
+                    <div className='buttons'>
                     <button onClick={() => editPost(post)} >Edit</button>
                     <button onClick= {() => handleDelete(post)}>Delete</button>
+                    </div>
+                    <h5>- {post.user.name}</h5>
                 </div>
+            }
+            else{
+                return <div><h5>- {post.user.name}</h5></div>
             }
         }}
 

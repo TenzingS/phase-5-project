@@ -29,7 +29,7 @@ const PostContainer = ({user, post, handleDelete}) => {
                 <div onClick={() => withComments(post)}>
                 <h3 className='post-header'>{post.header}</h3>
                 <p className='post-body'>{post.body}</p>
-                <h5 id='comment-name'>- {post.user.name}</h5>
+                <h5>- {post.user.name}</h5>
                 </div>
                 {renderButtons()}
             </ul>

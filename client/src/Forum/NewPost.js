@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 
 
-const NewPost = ({user}) => {
+const NewPost = ({user, setUser}) => {
     const [headerData, setHeaderData] = useState('')
     const [bodyData, setBodyData] = useState('')
 
@@ -19,7 +19,6 @@ const NewPost = ({user}) => {
 
     function handleSubmit(e){
         e.preventDefault();
-        // const newpost = {header: headerData, body: bodyData};
         fetch('/posts', {
             method: 'POST',
             headers: {
@@ -33,12 +32,37 @@ const NewPost = ({user}) => {
     function cancelPost(){
         history.push('/home')
     }
+
+    function toPortfolio() {
+        history.push('/me')
+    }
+
+    function logOut() {
+        fetch('/logout', {
+            method: 'DELETE' })
+        .then(r => {
+            if (r.ok) {
+            setUser(null);
+            }
+        });
+        history.push('/')
+        }
+
+    function goDiscussion(){
+        history.push('/home')
+    }
     
     return (
-        <div className='edit-post'>
+        <div>
+            <div className='view-wrapper'>
+                <button className='viewing-user' onClick={toPortfolio}>{user.name}</button>
+                <button className='logout' onClick = {logOut} >Log Out</button>
+            </div>
+            <button className='discussion' onClick = {goDiscussion} >Go to Discussion Board</button>
+            <div className='content' id='edit-post'>
             <h4>Create a new post {user.name}!</h4>
             <form onSubmit={handleSubmit} >
-            <input className='inputarea' placeholder="Put header here..." onChange={handleHeader} value={headerData} />
+            <textarea className='inputarea' placeholder="Put header here..." onChange={handleHeader} value={headerData} />
             <br/>
             <textarea className='inputarea' placeholder="Put body here..." onChange={handleBody} value={bodyData} />
             <div>
@@ -46,6 +70,7 @@ const NewPost = ({user}) => {
                 <button onClick={cancelPost} >Cancel</button>
             </div>
         </form>
+        </div>
         </div>
     );
 }

@@ -5,18 +5,25 @@ const Portfolio = ({user, setUser}) => {
 
     let history = useHistory();
 
+    function withComments(post) {
+        history.push(`/post/${post.id}`)
+    }
+
+    function toPost(comment) {
+        history.push(`/post/${comment.post_id}`)
+    }
+
     const listPosts = user.posts.map((post) => 
         <ul key={post.id}>
-            <h4 className='post-header'>{post.header}</h4>
-            <p className='post-body'>{post.body}</p>
+            <h4 onClick= {() => withComments(post)} className='post-header'>{post.header}</h4>
             {console.log(user)}
         </ul>
     )
 
     const listComments = user.comments.map((comment) => 
         <ul key={comment.id}>
-            {console.log(comment)}
-            <p >{comment.comment} </p>
+            <a className='post-body' onClick={() => toPost(comment)} >{comment.comment} </a>
+            <br/><br/>
         </ul>
     )
 
@@ -58,7 +65,7 @@ const Portfolio = ({user, setUser}) => {
             <br/><br/>
             Posts: {listPosts}
             <br/><br/>
-            Comments: {listComments}
+            Comments: <br/><br/>{listComments}
         </div>
         </ul>
         </div>

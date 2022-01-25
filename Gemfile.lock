@@ -116,6 +116,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.4-x86_64-linux)
       racc (~> 1.4)
+    pg (1.3.0)
     puma (5.5.0)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -193,12 +194,13 @@ DEPENDENCIES
   figaro
   image_processing (~> 1.2)
   listen (~> 3.3)
+  pg
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.4, >= 6.1.4.1)
   rest-client (~> 2.1)
   spring
-  sqlite3 (~> 1.4)
+  sqlite3
   tzinfo-data
 
 RUBY VERSION
