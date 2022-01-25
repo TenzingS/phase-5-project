@@ -18,7 +18,7 @@ const DiscussionBoard = ({setUser, user})=> {
     useEffect(() => {
         fetch('/posts')
         .then(res => res.json())
-        .then(data => setPosts(data))
+        .then(data => setPosts(data.sort((a, b) => b.created_at - a.created_at).reverse()))
         },[])
 
 
@@ -79,10 +79,14 @@ const DiscussionBoard = ({setUser, user})=> {
         </div>
     }
 
+    function toPortfolio() {
+        history.push('/me')
+    }
+
     return (
         <div className='body'>
             <div className='view-wrapper'>
-                <h4 className='viewing-user'>User: {user.name}</h4>
+                <button className='viewing-user' onClick={toPortfolio}>{user.name}</button>
                 <button className='logout' onClick = {logOut} >Log Out</button>
             </div>
             <br />

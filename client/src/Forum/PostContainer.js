@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import EditPost from './EditPost';
-import Comments from './Comments';
+
 
 const PostContainer = ({user, post, handleDelete}) => {
 

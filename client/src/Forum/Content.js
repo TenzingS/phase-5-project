@@ -1,5 +1,4 @@
 import React from 'react';
-import NewPost from './NewPost';
 import PostContainer from './PostContainer';
 
 const Content = ({posts, handleDelete, user}) => {

@@ -59,10 +59,14 @@ const Stats = ({user, setUser}) => {
     //     history.push('/players')
     // }
 
+    function toPortfolio() {
+        history.push('/me')
+    }
+
     return (
         <div>
             <div className='view-wrapper'>
-                <h4>User: {user.name}</h4>
+                <button className='viewing-user' onClick={toPortfolio}>{user.name}</button>
                 <button onClick = {logOut} >Log Out</button>
             </div>
             <button onClick = {goDiscussion} >Go to Discussion Board</button>

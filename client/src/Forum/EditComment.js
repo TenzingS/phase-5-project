@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 
@@ -32,7 +32,7 @@ const EditComment = ({comment, user, setEdit}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <textarea onChange={handleEditComment} value={editComment} />
+            <textarea className='inputarea' onChange={handleEditComment} value={editComment} />
             <div>
                 <input type="submit" value="Submit" />
                 <button onClick={cancelEdit}>Cancel</button>

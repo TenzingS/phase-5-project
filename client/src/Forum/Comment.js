@@ -15,10 +15,7 @@ const Comment = ({comment, user, post}) => {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then((r) => { 
-        if (r.ok) {
-        console.log('Item was deleted!')
-    }})
+    }).then(window.location.reload(false))
     }
 
     const renderButtons = () => {

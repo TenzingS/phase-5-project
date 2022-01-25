@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useState, useEffect } from "react";
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router'
@@ -11,12 +11,14 @@ const Comments = ({setUser, user}) => {
     const params = useParams(); 
 
     const [post, setPost] = useState([]);
+    const [edit, setEdit] = useState(null)
 
     useEffect(() => {
         fetch(`/posts/${params.id}`)
         .then(res => res.json())
         .then(data => {
             setPost(data)
+            console.log(data)
         })
     }, [])
 
@@ -40,7 +42,7 @@ const Comments = ({setUser, user}) => {
 
     const renderButtons = () => {
         if(post.user){
-            if (post.user.id == user.id){
+            if (post.user.id === user.id){
                 return <div className='buttons'>
                     <button onClick={() => editPost(post)} >Edit</button>
                     <button onClick= {() => handleDelete(post)}>Delete</button>
@@ -74,23 +76,34 @@ const Comments = ({setUser, user}) => {
         ))
     }
 
+    function toPortfolio() {
+        history.push('/me')
+    }
+
     return (
         <div className='body'>
         <div className='view-wrapper'>
-                <h4 className='viewing-user'>User: {user.name}</h4>
+                <button className='viewing-user' onClick={toPortfolio}>{user.name}</button>
                 <button className='logout' onClick = {logOut} >Log Out</button>
         </div>
         <br />
         <h1 className='nba-today'>NBA Today</h1>
         <button onClick = {goDiscussion} >Go to Discussion Board</button>
+        <br/>
         <div className="content">
             <ul>
                 <h3 className='post-header'>{post.header}</h3>
                 <p className='post-body'>{post.body}</p>
                 {renderButtons()}
                 <br/>
-                {itemsToRender}
-                <NewComment user={user}/>
+                <br/>
+                <strong>Comments:</strong>
+                <br/>
+                <br/>
+                <div> {itemsToRender}</div>
+                <br/>
+                <br/>
+                <NewComment user={user} setEdit={setEdit} />
             </ul>
         </div>
         </div>

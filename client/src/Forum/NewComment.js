@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router';
 
-const Newcomment = ({user}) => {
+const Newcomment = ({user, setEdit}) => {
     const params = useParams(); 
     let history = useHistory();
 
@@ -27,12 +27,9 @@ const Newcomment = ({user}) => {
         .then(r => r.json())
         .then(setNewComment)
         .catch((err) => console.log('error'))
-        history.push(`/post/${params.id}`)
+        (window.location.reload(false))
     }
 
-    function cancelComment(){
-        history.push('/home')
-    }
 
     return (
         <div>
@@ -40,7 +37,6 @@ const Newcomment = ({user}) => {
                 <textarea className='inputarea' placeholder="Add comment here..." onChange={handleNewComment} />
                 <div>
                     <input type="submit" value="Post"/>
-                    <button onClick={cancelComment} >Cancel</button>
                 </div>
             </form>
         </div>

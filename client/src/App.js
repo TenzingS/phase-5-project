@@ -6,7 +6,7 @@ import DiscussionBoard from './Forum/DiscussionBoard';
 import NewPost from "./Forum/NewPost";
 import EditPost from './Forum/EditPost';
 import Stats from './Stats/Stats';
-// import NewComment from './Forum/NewComment';
+import Portfolio from './Portfolio';
 import Comments from './Forum/Comments';
 
 function App() {
@@ -15,7 +15,9 @@ function App() {
     useEffect(() => {
       fetch("/me").then((r) => {
         if (r.ok) {
-          r.json().then((user) => setUser(user));
+          r.json().then((user) => {
+            setUser(user)
+            });
         }
       });
     }, []);
@@ -40,6 +42,9 @@ function App() {
         </Route>
         <Route exact path = "/post/:id">
           <Comments setUser={setUser} user={user}/>
+        </Route>
+        <Route exact path = "/me">
+          <Portfolio user={user} setUser={setUser} />
         </Route>
       </BrowserRouter>
   );
