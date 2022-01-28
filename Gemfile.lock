@@ -193,7 +193,7 @@ DEPENDENCIES
   figaro
   image_processing (~> 1.2)
   listen (~> 3.3)
-  pg
+  pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.4, >= 6.1.4.1)
