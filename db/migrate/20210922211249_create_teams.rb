@@ -1,11 +1,11 @@
 class CreateTeams < ActiveRecord::Migration[6.1]
   def change
     create_table :teams do |t|
-      t.string :name
-      t.string :abbreviation
-      t.string :conference
-      t.string :city
-      t.string :image
+      t.text :name
+      t.text :abbreviation
+      t.text :conference
+      t.text :city
+      t.text :image
   
 
       t.timestamps

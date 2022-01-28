@@ -69,7 +69,8 @@ const DiscussionBoard = ({setUser, user})=> {
         fetch('/news')
         .then(res => res.json())
         .then(data => 
-             setNews(data.articles))
+             setNews(data.articles)
+             )
         },[])
 
     function createNew(){
