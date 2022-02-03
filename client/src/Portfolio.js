@@ -62,9 +62,9 @@ const Portfolio = ({user, setUser}) => {
             Name: {user.name}
             <br/><br/>
             Email: {user.email}
-            <br/><br/>
+            <br/><hr/>
             Posts: {listPosts}
-            <br/><br/>
+            <br/><hr/>
             Comments: <br/><br/>{listComments}
         </div>
         </ul>

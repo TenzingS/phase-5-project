@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router';
 
-const EditPost = ({user}) => {
+const EditPost = ({user, setUser}) => {
 
     let history = useHistory();
     const params = useParams();
@@ -78,29 +78,57 @@ const EditPost = ({user}) => {
         history.push(`/post/${params.id}`)
     }
  
+    function toPortfolio() {
+        history.push('/me')
+    }
+
+    function logOut() {
+        fetch('/logout', {
+            method: 'DELETE' })
+        .then(r => {
+            if (r.ok) {
+            setUser(null);
+            }
+        });
+        history.push('/')
+        }
+
+    function goDiscussion(){
+        history.push('/home')
+    }
 
     return (
-        <div>
-            <form className='edit-post' onSubmit={handleEdits} >
-                <h2>Edit your post:</h2>
-                <h3>{oldHeader}</h3>
-                <textarea 
-                    className='inputarea'
-                    placeholder="Edit header here..." 
-                    onChange={handleEditHeader} 
-                    value={editHeader} />
-                    <br/>
-                <h3>{oldBody}</h3>
-                <textarea 
-                    className='inputarea'
-                    placeholder="Edit body here..." 
-                    onChange={handleEditBody} 
-                    value={editBody} />
-                <div>
-                    <button className="button" type="submit">Submit edit</button>
-                    <button onClick={cancelPost} >Cancel</button>
-                </div>
-            </form>
+        <div className='body'>
+            <div className='view-wrapper'>
+                <button className='viewing-user' onClick={toPortfolio}>{user.name}</button>
+                <button className='logout' onClick = {logOut} >Log Out</button>
+            </div>
+            <br />
+            <h1 className='nba-today'>NBA Today</h1>
+            <button onClick = {goDiscussion} >Go to Discussion Board</button>
+            <br/>
+            <div className='content'>
+                <form className='edit-post' onSubmit={handleEdits} >
+                    <h2>Edit your post:</h2>
+                    <h3>{oldHeader}</h3>
+                    <textarea 
+                        className='inputarea'
+                        placeholder="Edit header here..." 
+                        onChange={handleEditHeader} 
+                        value={editHeader} />
+                        <br/>
+                    <h3>{oldBody}</h3>
+                    <textarea 
+                        className='inputarea'
+                        placeholder="Edit body here..." 
+                        onChange={handleEditBody} 
+                        value={editBody} />
+                    <div>
+                        <button className="button" type="submit">Submit edit</button>
+                        <button onClick={cancelPost} >Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

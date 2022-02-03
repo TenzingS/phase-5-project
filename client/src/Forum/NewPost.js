@@ -26,7 +26,7 @@ const NewPost = ({user, setUser}) => {
             },
             body: JSON.stringify({header: headerData, body: bodyData, user_id: user.id})
         })
-        history.push('/home')
+        history.push('/post')
     }
 
     function cancelPost(){
@@ -58,10 +58,13 @@ const NewPost = ({user, setUser}) => {
                 <button className='viewing-user' onClick={toPortfolio}>{user.name}</button>
                 <button className='logout' onClick = {logOut} >Log Out</button>
             </div>
+            <br />
+            <h1 className='nba-today'>NBA Today</h1>
             <button className='discussion' onClick = {goDiscussion} >Go to Discussion Board</button>
+            <br />
             <div className='content' id='edit-post'>
             <h4>Create a new post {user.name}!</h4>
-            <form onSubmit={handleSubmit} >
+            <form className='newpostform' onSubmit={handleSubmit} >
             <textarea className='inputarea' placeholder="Put header here..." onChange={handleHeader} value={headerData} />
             <br/>
             <textarea className='inputarea' placeholder="Put body here..." onChange={handleBody} value={bodyData} />

@@ -36,7 +36,7 @@ const Newcomment = ({user, setEdit}) => {
             <form onSubmit={handleSubmit} >
                 <textarea className='inputarea' placeholder="Add comment here..." onChange={handleNewComment} />
                 <div>
-                    <input type="submit" value="Post"/>
+                    <input type="submit" value="Post Comment"/>
                 </div>
             </form>
         </div>

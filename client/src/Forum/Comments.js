@@ -101,7 +101,7 @@ const Comments = ({setUser, user}) => {
                 <h3 className='post-header'>{post.header}</h3>
                 <p className='post-body'>{post.body}</p>
                 {renderButtons()}
-                <br/>
+                <hr/>
                 <br/>
                 <strong>Comments:</strong>
                 <br/>
